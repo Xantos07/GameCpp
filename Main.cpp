@@ -22,11 +22,11 @@ int main()
     float mapScale{8};
 
     
-    Character dieu{width, height};
+    Character player{width, height};
 
     Grid grid{Map.width, Map.height,mapScale , 8};
 
-    Enemy satan{Vector2{450.0f,780.0f}, LoadTexture("textures/Basic Charakter Spritesheet.png")};
+    //Enemy Enemy{Vector2{450.0f,780.0f}, LoadTexture("textures/Basic Charakter Spritesheet.png")};
 
     Props props[17]{
         Props{Vector2{250.0f,480.0f},LoadTexture("textures/Basic Plants.png"),  Vector2{0,0}, Vector2{6,2}},
@@ -53,8 +53,8 @@ int main()
         Props{Vector2{960.0f,768.0f},LoadTexture("textures/Basic Plants.png"),  Vector2{4,0}, Vector2{6,2}},
     };
 
-    satan.SetTarget(&dieu);
-    grid.SetTarget(&dieu);
+    //Enemy.SetTarget(&player);
+    grid.SetTarget(&player);
 
     SetTargetFPS(60);
 
@@ -64,37 +64,38 @@ int main()
 
         ClearBackground(BLACK);
 
-        mapPos = Vector2Scale(dieu.GetWorldPos(), -1.0f);
+        mapPos = Vector2Scale(player.GetWorldPos(), -1.0f);
         DrawTextureEx(Map, mapPos, 0, mapScale, WHITE);
+        //DrawText(TextFormat("Actuellement en : %i   /--------/   %i", dieu.GetWorldPos().x, dieu.GetWorldPos().y), 0, 0, 15, RED);
 
        for (auto prop : props)
        {    
-            prop.Render(dieu.GetWorldPos());
-            prop.DrawnCollision(dieu.GetWorldPos());
+            prop.Render(player.GetWorldPos());
+            prop.DrawnCollision(player.GetWorldPos());
        }
 
-        if(dieu.GetWorldPos().x < 0 || 
-        dieu.GetWorldPos().y < 0 ||
-        dieu.GetWorldPos().x + width > Map.width *mapScale ||
-        dieu.GetWorldPos().y + height > Map.height *mapScale)
+        if(player.GetWorldPos().x < 0 || 
+        player.GetWorldPos().y < 0 ||
+        player.GetWorldPos().x + width > Map.width *mapScale ||
+        player.GetWorldPos().y + height > Map.height *mapScale)
         {
-           dieu.UndoMovement();      
+           player.UndoMovement();      
         }
         
         for (auto prop : props)
         {
-            if (CheckCollisionRecs(prop.GetCollisionRec(dieu.GetWorldPos()), dieu.GetCollisionRec()))
+            if (CheckCollisionRecs(prop.GetCollisionRec(player.GetWorldPos()), player.GetCollisionRec()))
             {
-                    dieu.UndoMovement();
+                    player.UndoMovement();
             }
         } 
         
-        dieu.Tick(GetFrameTime());
-        satan.Tick(GetFrameTime());
+        player.Tick(GetFrameTime());
+        //Enemy.Tick(GetFrameTime());
         grid.Tick(GetFrameTime());
 
-        dieu.DrawnCollision();
-        satan.DrawnCollision();
+        player.DrawnCollision();
+        //Enemy.DrawnCollision();
         grid.DrawGrid();
 
         EndDrawing();
