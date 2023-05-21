@@ -22,6 +22,7 @@ class Grid
         Grid(int width, int height,float scale, int sizePixel);
         void Tick(float t);
         void DrawGrid();
+        void SetWorldPos(Vector2 _pos) {worldPos = _pos;};
         void SetTarget(Character* character){target = character; }
 
         Vector2 GetScreenPos();

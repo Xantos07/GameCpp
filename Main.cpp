@@ -30,7 +30,7 @@ int main()
 
     Props props[17]{
         Props{Vector2{250.0f,480.0f},LoadTexture("textures/Basic Plants.png"),  Vector2{0,0}, Vector2{6,2}},
-
+    
         //64 => tile = 8 / map => *8
         Props{Vector2{768.0f,576.0f},LoadTexture("textures/Basic Plants.png"),  Vector2{4,0}, Vector2{6,2}},
         Props{Vector2{768.0f,640.0f},LoadTexture("textures/Basic Plants.png"),  Vector2{4,0}, Vector2{6,2}},
@@ -65,7 +65,10 @@ int main()
         ClearBackground(BLACK);
 
         mapPos = Vector2Scale(player.GetWorldPos(), -1.0f);
+        grid.SetWorldPos(Vector2Scale(player.GetWorldPos(), -1.0f));
+
         DrawTextureEx(Map, mapPos, 0, mapScale, WHITE);
+
         //DrawText(TextFormat("Actuellement en : %i   /--------/   %i", dieu.GetWorldPos().x, dieu.GetWorldPos().y), 0, 0, 15, RED);
 
        for (auto prop : props)
