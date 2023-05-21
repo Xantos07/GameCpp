@@ -1,8 +1,10 @@
+#ifndef Props_H
+#define Props_H
+
 #include "raylib.h"
 
 class Props
-{
-    
+{   
     private:
         Texture2D texture{};
         Vector2 worldPos{};
@@ -22,3 +24,4 @@ class Props
         void DrawnCollision(Vector2 characterPos);
 
 };
+#endif

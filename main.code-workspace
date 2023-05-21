@@ -51,7 +51,14 @@
 			"streambuf": "cpp",
 			"cinttypes": "cpp",
 			"typeinfo": "cpp",
-			"functional": "cpp"
+			"functional": "cpp",
+			"bit": "cpp",
+			"compare": "cpp",
+			"concepts": "cpp",
+			"iterator": "cpp",
+			"numeric": "cpp",
+			"random": "cpp",
+			"numbers": "cpp"
 		}
 	}
 }

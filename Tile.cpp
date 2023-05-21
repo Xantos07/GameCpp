@@ -1,6 +1,6 @@
 #include "Tile.h"
 
-Tile::Tile()
+Tile::Tile()//(Vector2 coord) : Coord(coord)
 {
 
 }

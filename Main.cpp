@@ -93,7 +93,7 @@ int main()
         player.Tick(GetFrameTime());
         //Enemy.Tick(GetFrameTime());
         grid.Tick(GetFrameTime());
-
+        
         player.DrawnCollision();
         //Enemy.DrawnCollision();
         grid.DrawGrid();

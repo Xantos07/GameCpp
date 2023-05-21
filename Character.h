@@ -10,7 +10,7 @@ class Character : public BaseCharacter
         int windowWidth{};
         int windowHeight{};
         Texture2D hue {LoadTexture("textures/Tools.png")};
-        
+
     public:
         
         Character(int winWidth, int winHeight);

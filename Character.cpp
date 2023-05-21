@@ -1,5 +1,6 @@
 #include "Character.h"
 #include "raymath.h"
+#include "Props.h"
 
 Character::Character(int winWidth, int winHeight) : windowWidth(winWidth),  windowHeight(winHeight)
 {
@@ -46,6 +47,9 @@ void Character::Tick(float t)
 
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
     {
+        Props props { Props{Vector2{400.0f,400.0f},LoadTexture("textures/Basic Plants.png"),  Vector2{0,0}, Vector2{6,2}}};
+        props.Render(GetWorldPos());
+
         spriteVec.x = 1;
     }
     
