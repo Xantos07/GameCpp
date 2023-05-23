@@ -15,6 +15,17 @@ Grid::Grid(int winWidth, int winHeight,float scaleMap, int sizePixel) :
     {
         windowWidth.resize(windowHeight, Tile());
     }
+
+    for (int i = 0; i < windowWidth; i++) 
+    {
+        for (int j = 0; j < windowHeight; j++) 
+        {
+            tableau[i][j] = Tile();            
+            tableau[i][j].SetCoord(Vector2{i*64,j*64});
+            tableau[i][j].SetWorldPos(Vector2{i*64 + worldPos.x,j*64+ worldPos.y});
+        }
+    }
+    
 }
 
 void Grid::Tick(float t)
@@ -42,18 +53,24 @@ void Grid::Tick(float t)
     int score = test.x / 64;
     int score2 = test.y / 64; 
 
-    DrawText(TextFormat("posPlayer: %08i", score), 0, 100, 15, RED);
-    DrawText(TextFormat("posPlayer: %08i",  score2), 0, 0, 15, RED);
+    //DrawText(TextFormat("posPlayer: %08i", score), 0, 100, 15, RED);
+    //DrawText(TextFormat("posPlayer2: %08i",  score2), 0, 0, 15, RED);
 
-     DrawRectangle(target->GetScreenPos().x + 64,target->GetScreenPos().y, 64 , 64, BLACK);
+    DrawRectangle(target->GetScreenPos().x + 64,target->GetScreenPos().y, 64 , 64, BLACK);
     DrawRectangle(target->GetScreenPos().x ,target->GetScreenPos().y+ 64, 64 , 64, BLACK);
     DrawRectangle(target->GetScreenPos().x - 64,target->GetScreenPos().y, 64 , 64, BLACK);
     DrawRectangle(target->GetScreenPos().x,target->GetScreenPos().y- 64, 64 , 64, BLACK);
-    //  DrawRectangleLines(score*64,score2*64, 64 , 64, BLACK);
-    //  DrawRectangle(score*64,score2*64, 64 , 64, BLACK);
-    // tableau[score][score2].SetCoord(Vector2{score*64,score2*64});
-    // tableau[score][score2].SetTile(true);
-    // tableau[score][score2].Draw();
+/*
+    for (int i = 0; i < windowWidth; i++) 
+    {
+        for (int j = 0; j < windowHeight; j++) 
+        {       
+            tableau[i][j].SetWorldPos(Vector2{i* 64 + worldPos.x,j*64+ worldPos.y});
+        }
+    }
+    tableau[score][score2].SetTile(true);
+    tableau[score][score2].Render(target->GetWorldPos());
+    */
 }
 
 void Grid::DrawGrid()

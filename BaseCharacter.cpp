@@ -58,6 +58,7 @@ void BaseCharacter::Tick(float t)
     if (Vector2Length(velocity) != 0.0)
     {
         worldPos = Vector2Add(worldPos, Vector2Scale(Vector2Normalize(velocity), speed));
+
         velocity.x > 0.f ? rightLeft = -1.f : rightLeft = 1.f;
         // direction.x < 0 ? playerDirection = 2 : playerDirection = 3;
 

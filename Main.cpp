@@ -19,7 +19,7 @@ int main()
     Rectangle mapRec;
     Vector2 mapPos{0.0, 0.0};
 
-    float mapScale{8};
+    float mapScale{8.f};
 
     
     Character player{width, height};
@@ -100,7 +100,8 @@ int main()
         player.DrawnCollision();
         //Enemy.DrawnCollision();
         grid.DrawGrid();
-
+     
+        DrawFPS(0,0);
         EndDrawing();
     }
 

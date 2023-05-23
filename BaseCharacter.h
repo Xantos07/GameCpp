@@ -11,6 +11,7 @@ class BaseCharacter
 
         BaseCharacter();
         Vector2 GetWorldPos() { return worldPos; }
+
         void UndoMovement();
         virtual void Tick(float t);
         virtual void DrawnCollision();
@@ -22,6 +23,7 @@ class BaseCharacter
         Texture2D texture = LoadTexture("textures/Basic Charakter Spritesheet.png");
         Vector2 screenPos{};
         Vector2 worldPos{};
+
         Vector2 worldPosLastFrame{};
         int playerDirection{0};
         int frame{};
