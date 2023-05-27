@@ -6,23 +6,27 @@
 
 Grid::Grid(int winWidth, int winHeight,float scaleMap, int sizePixel) :
  windowWidth(winWidth),  windowHeight(winHeight), windowPixel(sizePixel), scale(scaleMap)
-{ 
+{  
     windowWidth = (windowWidth / windowPixel) * scale;
     windowHeight = (windowHeight / windowPixel) * scale;    
+  
+    int x = (windowWidth/64) * scale;
+    int y = (windowHeight/64) * scale;
 
     tableau.resize(windowWidth);
-    for (auto& windowWidth : tableau) 
-    {
-        windowWidth.resize(windowHeight, Tile());
-    }
 
-    for (int i = 0; i < windowWidth; i++) 
+    for (auto& x : tableau) 
     {
-        for (int j = 0; j < windowHeight; j++) 
-        {
+        x.resize(y, Tile());
+    }
+    // Peu causer une latence
+    for (int i = 0; i < x; i++) 
+    {
+        for (int j = 0; j < y; j++) 
+        {            
             tableau[i][j] = Tile();            
-            tableau[i][j].SetCoord(Vector2{i*64,j*64});
-            tableau[i][j].SetWorldPos(Vector2{i*64 + worldPos.x,j*64+ worldPos.y});
+            tableau[i][j].SetCoord(Vector2{i*64.f,j*64.f});
+            tableau[i][j].SetWorldPos(Vector2{i*64.f + worldPos.x,j*64.f+ worldPos.y});
         }
     }
     
@@ -60,17 +64,17 @@ void Grid::Tick(float t)
     DrawRectangle(target->GetScreenPos().x ,target->GetScreenPos().y+ 64, 64 , 64, BLACK);
     DrawRectangle(target->GetScreenPos().x - 64,target->GetScreenPos().y, 64 , 64, BLACK);
     DrawRectangle(target->GetScreenPos().x,target->GetScreenPos().y- 64, 64 , 64, BLACK);
-/*
-    for (int i = 0; i < windowWidth; i++) 
+
+     tableau[score][score2].SetTile(false);
+
+    for (int i = 0; i < (windowWidth/64) * scale; i++) 
     {
-        for (int j = 0; j < windowHeight; j++) 
+        for (int j = 0; j < (windowWidth/64) * scale; j++) 
         {       
-            tableau[i][j].SetWorldPos(Vector2{i* 64 + worldPos.x,j*64+ worldPos.y});
+            tableau[i][j].SetWorldPos(Vector2{i*64.f + worldPos.x,j*64.f+ worldPos.y});
+            tableau[i][j].Render(target->GetWorldPos(), Vector2{i*64.f + worldPos.x,j*64.f+ worldPos.y});
         }
     }
-    tableau[score][score2].SetTile(true);
-    tableau[score][score2].Render(target->GetWorldPos());
-    */
 }
 
 void Grid::DrawGrid()
