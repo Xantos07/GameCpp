@@ -8,7 +8,7 @@ class Tile
         Vector2 coord{};        
         Vector2 worldPos{};
         bool isEmpty{true};
-
+        bool update{false};
         Props prop = {Vector2{0.0f,0.0f},LoadTexture("textures/Basic Plants.png"),  Vector2{4,0}, Vector2{6,2}};
     public:
         Tile(/*Vector2 coord*/);
@@ -19,7 +19,6 @@ class Tile
         Vector2 GetWorldPos() { return worldPos;};
 
         void Render(Vector2 characterPos, Vector2 pos);
-        Rectangle GetCollisionRec(Vector2 characterPos);
 
         void SetTile(bool _isEmpty){isEmpty = _isEmpty; };
 

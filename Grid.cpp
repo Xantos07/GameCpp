@@ -66,13 +66,15 @@ void Grid::Tick(float t)
     DrawRectangle(target->GetScreenPos().x,target->GetScreenPos().y- 64, 64 , 64, BLACK);
 
      tableau[score][score2].SetTile(false);
+    int x = (windowWidth/64) * scale;
+    int y = (windowHeight/64) * scale;
 
-    for (int i = 0; i < (windowWidth/64) * scale; i++) 
+    for (int i = 0; i < x; i++) 
     {
-        for (int j = 0; j < (windowWidth/64) * scale; j++) 
+        for (int j = 0; j < y; j++) 
         {       
-            tableau[i][j].SetWorldPos(Vector2{i*64.f + worldPos.x,j*64.f+ worldPos.y});
-            tableau[i][j].Render(target->GetWorldPos(), Vector2{i*64.f + worldPos.x,j*64.f+ worldPos.y});
+            tableau[i][j].SetWorldPos(Vector2Scale(target->GetWorldPos(), -1.0f));
+            tableau[i][j].Render(target->GetWorldPos(), Vector2{i*x*2,j*y*2});
         }
     }
 }
