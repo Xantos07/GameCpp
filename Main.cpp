@@ -1,4 +1,6 @@
 #include "raylib.h"
+#include <iostream>
+
 #include "raymath.h"
 #include "Props.h"
 
@@ -54,10 +56,12 @@ int main()
     };
 
     //Enemy.SetTarget(&player);
-    grid.SetTarget(&player);
+    //grid.SetTarget(&player);
+    player.SetGrid(&grid);
 
     SetTargetFPS(60);
 
+    Vector2 mapPosToPlayer{};
     while (!WindowShouldClose())
     {
         BeginDrawing();
@@ -67,7 +71,11 @@ int main()
         mapPos = Vector2Scale(player.GetWorldPos(), -1.0f);
         grid.SetWorldPos(Vector2Scale(player.GetWorldPos(), -1.0f));
 
+        //grid.PlayerPos(Vector2{dir.x + player.GetScreenPos().x,dir.y+ player.GetScreenPos().y});
+        std::cout << " x : "<< mapPos.x << " y : " << mapPos.y << std::endl;;
+
         DrawTextureEx(Map, mapPos, 0, mapScale, WHITE);
+        DrawCircle( mapPos.x, mapPos.y, 25.f, BLACK);
 
         //DrawText(TextFormat("Actuellement en : %i   /--------/   %i", dieu.GetWorldPos().x, dieu.GetWorldPos().y), 0, 0, 15, RED);
 
@@ -93,9 +101,11 @@ int main()
             }
         } 
         
+
+        player.SetPosGrid(grid.GetWorldPos());
         player.Tick(GetFrameTime());
         //Enemy.Tick(GetFrameTime());
-        grid.Tick(GetFrameTime());
+        grid.Tick(GetFrameTime(), player.GetWorldPos());
         
         player.DrawnCollision();
         //Enemy.DrawnCollision();

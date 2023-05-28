@@ -1,6 +1,7 @@
 #include "Character.h"
 #include "raymath.h"
 #include "Props.h"
+#include <iostream>
 
 Character::Character(int winWidth, int winHeight) : windowWidth(winWidth),  windowHeight(winHeight)
 {
@@ -18,6 +19,7 @@ Vector2 Character::GetScreenPos()
                  static_cast<float>(windowHeight) / 2.0f - scale * (0.5f * (float)height)
     };
 }
+
 
 void Character::Tick(float t)
 {
@@ -47,6 +49,25 @@ void Character::Tick(float t)
 
     if (IsMouseButtonDown(MOUSE_BUTTON_LEFT))
     {
+        //Vector2 test = Vector2Subtract(worldPos, grid->GetWorldPos());
+        Vector2 test = Vector2Subtract(worldPos, posGrid);
+
+        int score = test.x / 64;
+        int score2 = test.y / 64; 
+
+
+std::cout << "posGrid : " << posGrid.x << " et " << posGrid.y << std:: endl;
+std::cout << "worldPos : " << worldPos.x << " et " << worldPos.y << std:: endl;
+std::cout << "test : " << test.x << " et " << test.y << std:: endl;
+std::cout << "Ici nous avons alors : " << score << " et " << score2 << std:: endl;
+
+        //grid->SetBoard()[score][score2].SetTile(false);
+        std::vector<std::vector<Tile>> board = grid->GetGrid();
+
+        board[score][score2].SetTile(false);
+
+        grid->SetBoard(board);
+
         Props props { Props{Vector2{400.0f,400.0f},LoadTexture("textures/Basic Plants.png"),  Vector2{0,0}, Vector2{6,2}}};
         props.Render(GetWorldPos());
 

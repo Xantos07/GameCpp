@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "raymath.h"
+
 /*Enemy::Enemy(Vector2 pos, Texture2D tex) : worldPos(pos), texture(tex){}*/
 
 Enemy::Enemy(Vector2 pos, Texture2D tex) 

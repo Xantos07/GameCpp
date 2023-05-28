@@ -5,22 +5,27 @@
 
 #include "raylib.h"
 #include "BaseCharacter.h"
-
+#include "Grid.h"
 
 class Character : public BaseCharacter
 {
     private:
+
         int windowWidth{};
         int windowHeight{};
         Texture2D hue {LoadTexture("textures/Tools.png")};
-        //Grid* grid;
+        Vector2 posGrid;
+        Grid* grid;
+
     public:
         
         Character(int winWidth, int winHeight);
         virtual void Tick(float deltaTime) override;
         virtual void DrawnCollision() override;
         virtual Vector2 GetScreenPos() override;
-         //oid SetGrid(Grid* _grid){grid = _grid; }
+        void SetPosGrid(Vector2 _posGrid) {posGrid = _posGrid;};
+
+        void SetGrid(Grid* _grid){grid = _grid; }
 };
 
 #endif

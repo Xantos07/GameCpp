@@ -14,7 +14,7 @@ void Tile::Render(Vector2 characterPos, Vector2 pos)
         if(!update)
         {        
             update= true;
-            std::cout << " x : "<<pos.x<< " y : " << pos.y ;
+
             prop = {pos, LoadTexture("textures/Basic Plants.png"), Vector2{4, 0}, Vector2{6, 2}};
         }
 

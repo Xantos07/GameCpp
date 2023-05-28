@@ -11,7 +11,8 @@ class BaseCharacter
 
         BaseCharacter();
         Vector2 GetWorldPos() { return worldPos; }
-
+        Vector2 GetWorldPosToMap() { return worldPosToMap; }
+        void SetWorldPosToMap(Vector2 _worldPosToMap) {  worldPosToMap = _worldPosToMap; }
         void UndoMovement();
         virtual void Tick(float t);
         virtual void DrawnCollision();
@@ -23,6 +24,7 @@ class BaseCharacter
         Texture2D texture = LoadTexture("textures/Basic Charakter Spritesheet.png");
         Vector2 screenPos{};
         Vector2 worldPos{};
+        Vector2 worldPosToMap{};
 
         Vector2 worldPosLastFrame{};
         int playerDirection{0};
