@@ -69,13 +69,18 @@ int main()
         ClearBackground(BLACK);
 
         mapPos = Vector2Scale(player.GetWorldPos(), -1.0f);
-        grid.SetWorldPos(Vector2Scale(player.GetWorldPos(), -1.0f));
+       // Vector2 add = Vector2Add(player.GetWorldPos() , Vector2{500,500});
+        Vector2 add = Vector2Add( Vector2{0,0} , Vector2{-500,-500});
+        std::cout << "0 map x : "<< add.x << " map y : " << add.y << std::endl;;
+        //grid.SetWorldPos(Vector2Scale(add, .0f));
+        grid.SetWorldPos(add);
 
         //grid.PlayerPos(Vector2{dir.x + player.GetScreenPos().x,dir.y+ player.GetScreenPos().y});
-        std::cout << " x : "<< mapPos.x << " y : " << mapPos.y << std::endl;;
+        //std::cout << " x : "<< mapPos.x << " y : " << mapPos.y << std::endl;;
 
         DrawTextureEx(Map, mapPos, 0, mapScale, WHITE);
         DrawCircle( mapPos.x, mapPos.y, 25.f, BLACK);
+         DrawCircle( grid.GetWorldPos().x,  grid.GetWorldPos().y, 25.f, RED);
 
         //DrawText(TextFormat("Actuellement en : %i   /--------/   %i", dieu.GetWorldPos().x, dieu.GetWorldPos().y), 0, 0, 15, RED);
 
