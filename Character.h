@@ -5,7 +5,9 @@
 
 #include "raylib.h"
 #include "BaseCharacter.h"
-#include "Grid.h"
+
+
+class Grid;
 
 class Character : public BaseCharacter
 {

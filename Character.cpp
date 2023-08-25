@@ -1,7 +1,10 @@
 #include "Character.h"
 #include "raymath.h"
 #include "Props.h"
+#include "Tile.h"
+#include "Grid.h"
 #include <iostream>
+#include <vector>
 
 Character::Character(int winWidth, int winHeight) : windowWidth(winWidth),  windowHeight(winHeight)
 {

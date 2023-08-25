@@ -3,7 +3,6 @@
 #include <iostream>
 #include <vector>
 
-
 Grid::Grid(int winWidth, int winHeight,float scaleMap, int sizePixel) :
  windowWidth(winWidth),  windowHeight(winHeight), windowPixel(sizePixel), scale(scaleMap)
 {  

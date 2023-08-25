@@ -5,6 +5,8 @@
 #include "Tile.h"
 #include <vector>
 
+class Character;
+
 class Grid
 {
     
@@ -15,9 +17,9 @@ class Grid
         float scale{};
         Vector2 worldPos{};
         Vector2 screenPos{};
-        //Character* player;
+        Character* player;
 
-         std::vector<std::vector<Tile>> tableau;
+        std::vector<std::vector<Tile>> tableau;
         //std::vector<std::vector<Tile>> tableau;
 
     public:

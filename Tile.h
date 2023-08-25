@@ -1,3 +1,6 @@
+#ifndef Tile_H
+#define Tile_H
+
 #include "raylib.h"
 #include <string>
 #include "Props.h"
@@ -17,9 +20,7 @@ class Tile
         void SetProps(Props _prop) {prop=_prop; };
         void SetWorldPos(Vector2 _worldPos){worldPos = _worldPos; };
         Vector2 GetWorldPos() { return worldPos;};
-
         void Render(Vector2 characterPos, Vector2 pos);
-
         void SetTile(bool _isEmpty){isEmpty = _isEmpty; };
-
 };
+#endif
