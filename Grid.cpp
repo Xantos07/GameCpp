@@ -35,20 +35,6 @@ void Grid::Tick(float t,Vector2 playPos)
 {
     //DrawText(tableau[0][0].data.c_str(), 0, 0, 15, RED);
 
-    /*
-    Vector2 test = Vector2Subtract(target -> GetWorldPos(), worldPos);
-
-    int score = test.x / 64;
-    int score2 = test.y / 64; 
-
-    tableau[score][score2].SetTile(false);
-      
-
-    DrawRectangle(player->GetScreenPos().x + 64,player->GetScreenPos().y, 64 , 64, BLACK);
-    DrawRectangle(player->GetScreenPos().x ,player->GetScreenPos().y+ 64, 64 , 64, BLACK);
-    DrawRectangle(player->GetScreenPos().x - 64,player->GetScreenPos().y, 64 , 64, BLACK);
-    DrawRectangle(player->GetScreenPos().x,player->GetScreenPos().y- 64, 64 , 64, BLACK);
-    */  
 
     int x = (windowWidth/64) * scale;
     int y = (windowHeight/64) * scale;
@@ -59,6 +45,7 @@ void Grid::Tick(float t,Vector2 playPos)
         {       
             tableau[i][j].SetWorldPos(Vector2Scale(playPos, -1.0f));
             tableau[i][j].Render(playPos, Vector2{i*x*2,j*y*2});
+            tableau[i][j].UpdateTile(playPos);
         }
     }
 

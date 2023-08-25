@@ -71,7 +71,7 @@ int main()
         mapPos = Vector2Scale(player.GetWorldPos(), -1.0f);
        // Vector2 add = Vector2Add(player.GetWorldPos() , Vector2{500,500});
         Vector2 add = Vector2Add( Vector2{0,0} , Vector2{-500,-500});
-        std::cout << "0 map x : "<< add.x << " map y : " << add.y << std::endl;;
+        //std::cout << "0 map x : "<< add.x << " map y : " << add.y << std::endl;;
         //grid.SetWorldPos(Vector2Scale(add, .0f));
         grid.SetWorldPos(add);
 
@@ -114,7 +114,7 @@ int main()
         
         player.DrawnCollision();
         //Enemy.DrawnCollision();
-        grid.DrawGrid();
+       // grid.DrawGrid();
      
         DrawFPS(0,0);
         EndDrawing();

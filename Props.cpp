@@ -1,5 +1,6 @@
 #include "Props.h"
 #include "raymath.h"
+#include <iostream>
 
 Props::Props(Vector2 pos, Texture2D tex, Vector2 textureCoord, Vector2 divide) : worldPos(pos), texture(tex), textureCoordinate(textureCoord)
 {
@@ -50,4 +51,25 @@ void Props::DrawnCollision(Vector2 characterPos)
     DrawLine(C.x , C.y, A.x , A.y,BLUE);  
     DrawLine(D.x , D.y, C.x , C.y,BLUE);  
 
+}
+
+
+void Props::Grow(float t, Vector2 characterPos)
+{
+    currentGrow = currentGrow + t;
+    //std::cout << "currentGrow : " << currentGrow <<std:: endl;
+
+    if(currentGrow > timeToGrow && endGrowing == false)
+    {
+        endGrowing = true;
+        std::cout << "Growing : " << std:: endl;
+
+        //prop = {pos, LoadTexture("textures/Basic Plants.png"), Vector2{1, 0}, Vector2{6, 2}};
+        texture =  LoadTexture("textures/Basic Plants.png");
+        textureCoordinate = Vector2{2,2};
+        width = texture.width / 6;
+        height = texture.height/ 2;
+
+        Render(characterPos);
+    }
 }

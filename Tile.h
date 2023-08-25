@@ -21,6 +21,7 @@ class Tile
         void SetWorldPos(Vector2 _worldPos){worldPos = _worldPos; };
         Vector2 GetWorldPos() { return worldPos;};
         void Render(Vector2 characterPos, Vector2 pos);
+        void UpdateTile(Vector2 characterPos);
         void SetTile(bool _isEmpty){isEmpty = _isEmpty; };
 };
 #endif
