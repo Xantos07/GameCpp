@@ -59,17 +59,19 @@ void Props::Grow(float t, Vector2 characterPos)
     currentGrow = currentGrow + t;
     //std::cout << "currentGrow : " << currentGrow <<std:: endl;
 
-    if(currentGrow > timeToGrow && endGrowing == false)
+    if(currentGrow > timeToGrow && indexGrowing < stepGrowing)
     {
-        endGrowing = true;
         std::cout << "Growing : " << std:: endl;
 
         //prop = {pos, LoadTexture("textures/Basic Plants.png"), Vector2{1, 0}, Vector2{6, 2}};
         texture =  LoadTexture("textures/Basic Plants.png");
-        textureCoordinate = Vector2{2,2};
+
+        textureCoordinate = Vector2{2+indexGrowing,2};
         width = texture.width / 6;
         height = texture.height/ 2;
 
         Render(characterPos);
+        currentGrow = 0;
+        indexGrowing += 1;
     }
 }

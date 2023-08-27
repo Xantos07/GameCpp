@@ -18,7 +18,8 @@ class Props
         float timeToGrow = 3.0f;
         float currentGrow = 0.0f;
 
-        bool endGrowing = false;
+        int stepGrowing = 3;
+        int indexGrowing = 0;
 
     public:
 
